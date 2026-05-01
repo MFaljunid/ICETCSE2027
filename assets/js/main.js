@@ -93,23 +93,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── 7. TOURISM SLIDER — build cards ──
   const tourSlides = document.getElementById('tourSlides');
   if (tourSlides) {
-    const places = [
-      { name: 'Maravanthe Beach',        dist: '5 km',   desc: 'Sea on both sides of the road — unique in India',      emoji: '🏖️', bg: 'linear-gradient(135deg,#006994,#00b4d8)' },
-      { name: 'Kollur Mookambika Temple',dist: '40 km',  desc: 'Sacred temple amid Western Ghats forest',               emoji: '🛕', bg: 'linear-gradient(135deg,#8b4513,#d47c3a)' },
-      { name: 'Udupi Sri Krishna Temple',dist: '50 km',  desc: 'One of the most revered temples in South India',        emoji: '⛩️', bg: 'linear-gradient(135deg,#1a4fa0,#00b4d8)' },
-      { name: "St. Mary's Island",       dist: '60 km',  desc: 'Unique basalt rock formations & pristine beaches',      emoji: '🏝️', bg: 'linear-gradient(135deg,#006400,#228b22)' },
-      { name: 'Murudeshwar Temple',      dist: '100 km', desc: 'Giant Shiva statue overlooking the Arabian Sea',        emoji: '🗿', bg: 'linear-gradient(135deg,#4a0080,#9b30ff)' },
-      { name: 'Jog Falls',               dist: '120 km', desc: "India's second-highest plunge waterfall",               emoji: '💧', bg: 'linear-gradient(135deg,#004d40,#00897b)' },
-      { name: 'Kundapura Town',          dist: '2 km',   desc: 'Charming coastal town — fresh seafood & local culture', emoji: '🌊', bg: 'linear-gradient(135deg,#0a3d6b,#1a6fa0)' },
-      { name: 'Malpe Beach',             dist: '55 km',  desc: 'Beautiful beach near Udupi with boat rides',            emoji: '⛵', bg: 'linear-gradient(135deg,#7b3f00,#e8820a)' },
-      { name: 'Murdeshwar Fort',         dist: '105 km', desc: 'Historic fort ruins with panoramic sea views',          emoji: '🏯', bg: 'linear-gradient(135deg,#1a1a2e,#16213e)' },
-    ];
+const places = [
+  { name: 'Maravanthe Beach',         dist: '5 km',   desc: 'Sea on both sides of the road — unique in India',      img: 'assets/images/tourism/maravanthe.jpg',   bg: 'linear-gradient(135deg,#006994,#00b4d8)' },
+  { name: 'Kollur Mookambika Temple', dist: '40 km',  desc: 'Sacred temple amid Western Ghats forest',               img: 'assets/images/tourism/kollur.jpg',        bg: 'linear-gradient(135deg,#8b4513,#d47c3a)' },
+  { name: 'Udupi Sri Krishna Temple', dist: '50 km',  desc: 'One of the most revered temples in South India',        img: 'assets/images/tourism/udupi.jpg',         bg: 'linear-gradient(135deg,#1a4fa0,#00b4d8)' },
+  { name: "St. Mary's Island",        dist: '60 km',  desc: 'Unique basalt rock formations & pristine beaches',      img: 'assets/images/tourism/st-marys.jpg',      bg: 'linear-gradient(135deg,#006400,#228b22)' },
+  { name: 'Murudeshwar Temple',       dist: '100 km', desc: 'Giant Shiva statue overlooking the Arabian Sea',        img: 'assets/images/tourism/murudeshwar.jpg',   bg: 'linear-gradient(135deg,#4a0080,#9b30ff)' },
+  { name: 'Jog Falls',                dist: '120 km', desc: "India's second-highest plunge waterfall",               img: 'assets/images/tourism/jog-falls.jpg',     bg: 'linear-gradient(135deg,#004d40,#00897b)' },
+  { name: 'Kundapura Town',           dist: '2 km',   desc: 'Charming coastal town — fresh seafood & local culture', img: 'assets/images/tourism/kundapura.jpg',     bg: 'linear-gradient(135deg,#0a3d6b,#1a6fa0)' },
+  { name: 'Malpe Beach',              dist: '55 km',  desc: 'Beautiful beach near Udupi with boat rides',            img: 'assets/images/tourism/malpe.jpg',         bg: 'linear-gradient(135deg,#7b3f00,#e8820a)' },
+];
     // Duplicate for seamless infinite loop
     const all = [...places, ...places];
     all.forEach(p => {
       tourSlides.innerHTML += `
-        <div class="tour-card">
-          <div class="tour-img" style="background:${p.bg};">${p.emoji}</div>
+  <div class="tour-card">
+    <div class="tour-img" style="background:${p.bg};font-size:0;overflow:hidden;">
+      <img src="${p.img}" 
+           alt="${p.name}"
+           style="width:100%;height:100%;object-fit:cover;transition:transform .5s;"
+           onmouseover="this.style.transform='scale(1.08)'"
+           onmouseout="this.style.transform='scale(1)'"
+           onerror="this.style.opacity='0'">
+    </div>
           <div class="tour-overlay">
             <h4>${p.name}</h4>
             <p>${p.desc}</p>
