@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keynote Speakers — ICETCSE-2027</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/navbar.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <style>
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .spk-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .spk-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(232,160,32,0.35);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.3);
+    }
+    .spk-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--teal));
+    }
+    .spk-photo-wrap {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--navy2), var(--blue));
+    }
+    .spk-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .spk-card:hover .spk-photo { transform: scale(1.05); }
+    .spk-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(0deg, rgba(10,22,40,0.9) 0%, transparent 100%);
+    }
+    .spk-avatar-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      background: linear-gradient(135deg, var(--navy2) 0%, rgba(26,79,160,0.3) 100%);
+    }
+    .spk-avatar-circle {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      border: 2px dashed rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem;
+    }
+    .spk-avatar-placeholder span {
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      letter-spacing: 2px; text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+    .spk-body { padding: 1.5rem; }
+    .spk-country {
+      font-size: 12px; color: var(--teal);
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 0.4rem;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .spk-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.3rem; line-height: 1.2;
+    }
+    .spk-designation { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 0.2rem; }
+    .spk-affiliation { font-size: 12px; color: var(--accent); font-weight: 500; margin-bottom: 1rem; }
+    .spk-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 1rem 0; }
+    .spk-talk-label {
+      font-size: 10px; color: var(--gray);
+      letter-spacing: 1.5px; text-transform: uppercase;
+      margin-bottom: 0.35rem; display: block;
+    }
+    .spk-talk-title { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.55; font-style: italic; }
+    .spk-links { display: flex; gap: 8px; margin-top: 1rem; flex-wrap: wrap; }
+    .spk-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600;
+      padding: 4px 12px; border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      transition: all 0.2s; letter-spacing: 0.3px;
+    }
+    .spk-link:hover { border-color: var(--teal); color: var(--teal); }
+    .spk-card.tba { opacity: 0.5; border-style: dashed; }
+    .spk-card.tba:hover { opacity: 0.7; transform: translateY(-3px); }
+    .spk-name.tba-text {
+      color: rgba(255,255,255,0.3);
+      font-size: 1rem; font-family: var(--font-mono); letter-spacing: 2px;
+    }
+    @media (max-width: 1024px) { .speakers-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .speakers-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="container page-hero-content">
+    <div class="breadcrumb"><a href="../index.html">Home</a> › <span>Keynote Speakers</span></div>
+    <h1>Keynote <em>Speakers</em></h1>
+    <p>Distinguished researchers and industry leaders presenting at ICETCSE-2027.</p>
+  </div>
+</div>
+
+<section style="background:var(--navy2);">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">Invited Speakers</span>
+      <h2 class="section-title">Keynote Speakers</h2>
+      <p class="section-sub">World-class researchers and industry experts sharing their insights at ICETCSE-2027.</p>
+    </div>
+
+    <div class="speakers-grid reveal">
+
+      <!-- ══════════════════════════════════════════════
+           HOW TO ADD A SPEAKER:
+           1. Save photo as: assets/images/speakers/speaker1.jpg
+           2. Fill in name, designation, affiliation, country flag
+           3. Add talk title
+           4. Add real links (remove unused ones)
+           5. Copy this block to add more speakers
+           6. Delete TBA cards when replaced
+      ══════════════════════════════════════════════ -->
+
+      <!-- SPEAKER 1 -->
+      <div class="spk-card">
+        <div class="spk-photo-wrap">
+          <!-- CHANGE: speaker1.jpg → your image filename -->
+          <img
+            src="../assets/images/speakers/speaker1.jpg"
+            class="spk-photo"
+            alt="Keynote Speaker"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=spk-avatar-placeholder><div class=spk-avatar-circle>👤</div><span>Photo Coming Soon</span></div>'"
+          >
+        </div>
+        <div class="spk-body">
+          <!-- CHANGE: flag emoji + country -->
+          <div class="spk-country">🇮🇳 India</div>
+          <!-- CHANGE: Full name -->
+          <div class="spk-name">[Speaker Full Name]</div>
+          <!-- CHANGE: e.g. Professor / Senior Scientist / CEO -->
+          <div class="spk-designation">[Designation]</div>
+          <!-- CHANGE: e.g. IIT Bangalore / Google Research -->
+          <div class="spk-affiliation">[Institution / Company]</div>
+          <hr class="spk-divider">
+          <span class="spk-talk-label">🎤 Keynote Talk</span>
+          <!-- CHANGE: Title of the talk -->
+          <div class="spk-talk-title">"[Title of the Keynote Talk]"</div>
+          <div class="spk-links">
+            <!-- CHANGE href to real URLs, remove unused links -->
+            <a href="#" class="spk-link">🔗 Website</a>
+            <a href="#" class="spk-link">in LinkedIn</a>
+            <a href="#" class="spk-link">📄 ResearchGate</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPEAKER 2 -->
+      <div class="spk-card">
+        <div class="spk-photo-wrap">
+          <img
+            src="../assets/images/speakers/speaker2.jpg"
+            class="spk-photo"
+            alt="Keynote Speaker"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=spk-avatar-placeholder><div class=spk-avatar-circle>👤</div><span>Photo Coming Soon</span></div>'"
+          >
+        </div>
+        <div class="spk-body">
+          <div class="spk-country">🇮🇳 India</div>
+          <div class="spk-name">[Speaker Full Name]</div>
+          <div class="spk-designation">[Designation]</div>
+          <div class="spk-affiliation">[Institution / Company]</div>
+          <hr class="spk-divider">
+          <span class="spk-talk-label">🎤 Keynote Talk</span>
+          <div class="spk-talk-title">"[Title of the Keynote Talk]"</div>
+          <div class="spk-links">
+            <a href="#" class="spk-link">🔗 Website</a>
+            <a href="#" class="spk-link">in LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPEAKER 3 -->
+      <div class="spk-card">
+        <div class="spk-photo-wrap">
+          <img
+            src="../assets/images/speakers/speaker3.jpg"
+            class="spk-photo"
+            alt="Keynote Speaker"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=spk-avatar-placeholder><div class=spk-avatar-circle>👤</div><span>Photo Coming Soon</span></div>'"
+          >
+        </div>
+        <div class="spk-body">
+          <div class="spk-country">🇺🇸 USA</div>
+          <div class="spk-name">[Speaker Full Name]</div>
+          <div class="spk-designation">[Designation]</div>
+          <div class="spk-affiliation">[University / Company]</div>
+          <hr class="spk-divider">
+          <span class="spk-talk-label">🎤 Keynote Talk</span>
+          <div class="spk-talk-title">"[Title of the Keynote Talk]"</div>
+          <div class="spk-links">
+            <a href="#" class="spk-link">🔗 Website</a>
+            <a href="#" class="spk-link">📄 Google Scholar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TBA 1 — Delete when replaced with real speaker -->
+      <div class="spk-card tba">
+        <div class="spk-photo-wrap">
+          <div class="spk-avatar-placeholder">
+            <div class="spk-avatar-circle">🎤</div>
+            <span>To Be Announced</span>
+          </div>
+        </div>
+        <div class="spk-body">
+          <div class="spk-country" style="color:rgba(255,255,255,0.2);">── ── ──</div>
+          <div class="spk-name tba-text">To Be Announced</div>
+          <div class="spk-designation" style="color:rgba(255,255,255,0.2);">Speaker details coming soon</div>
+        </div>
+      </div>
+
+      <!-- TBA 2 — Delete when replaced with real speaker -->
+      <div class="spk-card tba">
+        <div class="spk-photo-wrap">
+          <div class="spk-avatar-placeholder">
+            <div class="spk-avatar-circle">🎤</div>
+            <span>To Be Announced</span>
+          </div>
+        </div>
+        <div class="spk-body">
+          <div class="spk-country" style="color:rgba(255,255,255,0.2);">── ── ──</div>
+          <div class="spk-name tba-text">To Be Announced</div>
+          <div class="spk-designation" style="color:rgba(255,255,255,0.2);">Speaker details coming soon</div>
+        </div>
+      </div>
+
+      <!-- TBA 3 — Delete when replaced with real speaker -->
+      <div class="spk-card tba">
+        <div class="spk-photo-wrap">
+          <div class="spk-avatar-placeholder">
+            <div class="spk-avatar-circle">🎤</div>
+            <span>To Be Announced</span>
+          </div>
+        </div>
+        <div class="spk-body">
+          <div class="spk-country" style="color:rgba(255,255,255,0.2);">── ── ──</div>
+          <div class="spk-name tba-text">To Be Announced</div>
+          <div class="spk-designation" style="color:rgba(255,255,255,0.2);">Speaker details coming soon</div>
+        </div>
+      </div>
+
+    </div><!-- end .speakers-grid -->
+  </div>
+</section>
+
+<script src="../assets/js/navbar.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

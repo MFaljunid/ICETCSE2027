@@ -1,0 +1,176 @@
+/* ═══════════════════════════════════════════
+   ICETCSE-2026 | Navbar Styles
+   navbar.css
+═══════════════════════════════════════════ */
+
+/* ── NAVBAR ── */
+#navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10,22,40,0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: all 0.3s ease;
+}
+#navbar.scrolled {
+  background: rgba(10,22,40,0.99);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  gap: 1rem;
+}
+
+/* Brand */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.nav-mitk-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+.nav-brand-sep {
+  width: 1px;
+  height: 28px;
+  background: rgba(255,255,255,0.15);
+}
+.nav-brand-text { display: flex; flex-direction: column; }
+.nav-brand-name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+.nav-brand-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.3px;
+}
+
+/* Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.65);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
+  background: rgba(232,160,32,0.08);
+}
+
+/* Right side */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.nav-elsevier-logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.8;
+  filter: brightness(1.15);
+  transition: opacity 0.2s;
+}
+.nav-elsevier-logo:hover { opacity: 1; }
+.nav-cta {
+  background: var(--accent);
+  color: var(--navy) !important;
+  padding: 8px 18px !important;
+  border-radius: 6px !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  white-space: nowrap;
+}
+.nav-cta:hover {
+  background: var(--accent2) !important;
+  color: var(--navy) !important;
+}
+
+/* Mobile hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Mobile menu */
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  background: rgba(10,22,40,0.99);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 1rem 2rem 1.5rem;
+  gap: 0.25rem;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: color 0.2s;
+}
+.nav-mobile a:hover { color: var(--accent); }
+.nav-mobile .nav-cta {
+  background: var(--accent);
+  color: var(--navy) !important;
+  text-align: center;
+  border-radius: 6px !important;
+  padding: 12px !important;
+  margin-top: 0.5rem;
+  border-bottom: none !important;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .nav-links { gap: 0; }
+  .nav-links a { font-size: 12px; padding: 6px 8px; }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-right { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-inner { height: 60px; }
+}
