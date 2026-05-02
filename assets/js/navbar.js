@@ -63,7 +63,7 @@ const footerHTML = `
       <div class="footer-sep"></div>
       <img src="${root}assets/images/logo-elsevier.png" class="footer-elsevier" alt="Elsevier">
       <div style="margin-left:10px;">
-        <div class="footer-text">© 2027 <span>ICETCSE-2027</span> · Dept. of CSE, MITK, Kundapura</div>
+        <div class="footer-text">© 2027 <span>ICETCSE-2027</span> · Dept. of CSE, MIT, Kundapura, Udupi, Karnataka, India</div>
         <div class="footer-text">Published by Elsevier Procedia Computer Science · Scopus Indexed</div>
       </div>
     </div>
