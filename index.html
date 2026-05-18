@@ -49,55 +49,127 @@
       padding: 0 2rem;
     }
 
-.hero-logos {
-  display: flex; align-items: center; justify-content: center;
-  gap: 12px; margin-bottom: 2.25rem; flex-wrap: wrap;
-  opacity: 0; animation: fadeUp .8s ease forwards;
+.hero-top-brands {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 1rem; 
+  margin-bottom: 2.5rem; 
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
 }
-.hero-logo-pill {
-  display: flex; align-items: center; gap: 10px;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 100px;
-  padding: 8px 18px 8px 8px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s;
+
+.hero-top-brands .brand-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.3s ease;
 }
-.hero-logo-pill:hover {
-  background: rgba(255,255,255,0.11);
-  border-color: rgba(255,255,255,0.2);
+
+.hero-top-brands .brand-card:hover {
+  transform: translateY(-5px);
 }
-.hero-logo-pill img {
-  height: 36px; width: auto; object-fit: contain;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.92);
-  padding: 4px;
+
+.hero-top-brands .brand-logo-wrapper {
+  height: 140px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
-.hero-logo-pill span {
-  font-size: 12px; font-weight: 600;
-  color: rgba(255,255,255,0.85);
-  white-space: nowrap;
+
+.hero-top-brands .brand-logo-wrapper:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35), 0 0 20px rgba(0, 180, 216, 0.2);
 }
-.hero-logo-divider {
-  font-size: 11px; color: rgba(255,255,255,0.3);
-  letter-spacing: 1px;
+
+.hero-top-brands .mitk-wrapper {
+  aspect-ratio: 1 / 1;
+  padding: 8px;
 }
-.hero-pub-tags {
-  display: flex; align-items: center; gap: 6px;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 100px;
-  padding: 8px 14px;
-  backdrop-filter: blur(10px);
+
+.hero-top-brands .elsevier-wrapper {
+  padding: 8px 18px;
+  width: auto;
 }
-.hero-pub-tag {
-  font-size: 10px; font-weight: 700;
-  padding: 2px 8px; border-radius: 100px;
-  letter-spacing: 0.5px;
+
+.hero-top-brands .brand-img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
 }
-.hero-pub-tag.scopus { background: #e8630a; color: #fff; }
-.hero-pub-tag.wos    { background: #00518a; color: #fff; }
-.hero-pub-tag.oa     { background: rgba(39,174,96,0.3); color: #5de899; border: 1px solid rgba(39,174,96,0.4); }
+
+.hero-top-brands .brand-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-top-brands .brand-role {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--teal);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.hero-top-brands .brand-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.3px;
+}
+
+.hero-top-brands .brand-divider {
+  width: 1px;
+  height: 90px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.18) 20%, rgba(255, 255, 255, 0.18) 80%, transparent);
+  flex-shrink: 0;
+}
+
+/* Tablet Media Query */
+@media (max-width: 768px) {
+  .hero-top-brands {
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-top-brands .brand-logo-wrapper {
+    height: 100px;
+    border-radius: 14px;
+  }
+  .hero-top-brands .mitk-wrapper {
+    padding: 6px;
+  }
+  .hero-top-brands .elsevier-wrapper {
+    padding: 6px 12px;
+  }
+  .hero-top-brands .brand-divider {
+    height: 70px;
+  }
+  .hero-top-brands .brand-name {
+    font-size: 11px;
+  }
+}
+
+/* Mobile Media Query */
+@media (max-width: 480px) {
+  .hero-top-brands {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .hero-top-brands .brand-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18) 20%, rgba(255, 255, 255, 0.18) 80%, transparent);
+  }
+}
 
     .hero-tag {
       display: inline-flex; align-items: center; gap: 8px;
@@ -174,10 +246,31 @@
   <div class="hero-orb orb1"></div>
   <div class="hero-orb orb2"></div>
   <div class="hero-content">
-    <div class="hero-logos">
-      <img src="assets/images/logo-mitk.png"     class="hero-mitk-logo"    alt="MITK">
-      <div class="hero-logo-sep"></div>
-      <img src="assets/images/logo-elsevier.png" class="hero-elsevier-logo" alt="Elsevier Procedia">
+    <div class="hero-top-brands">
+      <!-- MITK Brand Card -->
+      <div class="brand-card">
+        <div class="brand-logo-wrapper mitk-wrapper">
+          <img src="assets/images/logo-mitk.png" alt="MIT Kundapura" class="brand-img">
+        </div>
+        <div class="brand-meta">
+          <span class="brand-role">Organizing Institution</span>
+          <span class="brand-name">MIT Kundapura</span>
+        </div>
+      </div>
+      
+      <!-- Sleek Vertical Divider -->
+      <div class="brand-divider"></div>
+      
+      <!-- Elsevier Brand Card -->
+      <div class="brand-card">
+        <div class="brand-logo-wrapper elsevier-wrapper">
+          <img src="assets/images/logo-elsevier.png" alt="Elsevier Procedia" class="brand-img">
+        </div>
+        <div class="brand-meta">
+          <span class="brand-role">Publication Partner</span>
+          <span class="brand-name">Elsevier Procedia</span>
+        </div>
+      </div>
     </div>
     <!-- <div class="hero-tag">✦ Call for Papers Open</div> -->
     <div class="hero-conf">ICETCSE – 2027</div>
