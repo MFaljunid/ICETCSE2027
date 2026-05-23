@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── 6. COUNTDOWN TIMER ──
   // Set your deadline here (YYYY-MM-DDTHH:MM:SS)
-const DEADLINE = new Date('2027-07-19T23:59:00')
+const DEADLINE = new Date('2027-07-19T09:00:00')
 
   function updateCountdown() {
     const now  = new Date();
