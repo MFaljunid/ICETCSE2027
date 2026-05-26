@@ -31,10 +31,15 @@ const navHTML = `
       <a href="${root}pages/tourism.html">Visit</a>
       <a href="${root}pages/contact.html">Contact</a>
     </div>
-    <div class="nav-right">
-      <img src="${root}assets/images/logo-elsevier.png" class="nav-elsevier-logo" alt="Elsevier Procedia">
-      <a href="${root}pages/submission.html" class="nav-links a nav-cta">Submit Paper →</a>
-    </div>
+<div class="nav-right">
+  <img src="${root}assets/images/logo-elsevier.png" class="nav-elsevier-logo" alt="Elsevier Procedia">
+
+  <a href="https://easychair.org/conferences/?conf=icetcse2027"
+     target="_blank"
+     class="nav-cta">
+     Submit Paper →
+  </a>
+</div>
     <div class="nav-hamburger" id="navHamburger">
       <span></span><span></span><span></span>
     </div>
