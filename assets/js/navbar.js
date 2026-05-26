@@ -71,7 +71,7 @@ const footerHTML = `
       <a href="${root}index.html">Home</a>
       <a href="${root}pages/about.html">About</a>
       <a href="${root}pages/call-for-papers.html">Tracks</a>
-      <a href="${root}pages/submission.html">Submit</a>
+      <a href="https://easychair.org/conferences/?conf=icetcse2027" target="_blank">Submit</a>
       <a href="${root}pages/registration.html">Register</a>
       <a href="${root}pages/tourism.html">Visit</a>
       <a href="${root}pages/contact.html">Contact</a>
