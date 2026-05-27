@@ -7,6 +7,190 @@ const isSubPage = window.location.pathname.includes('/pages/');
 const root = isSubPage ? '../' : './';
 
 const navHTML = `
+<style>
+
+
+/* ── MOBILE DROPDOWN ── */
+.mob-dropdown { width: 100%; }
+
+.mob-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  color: rgba(255,255,255,0.85);
+  font-size: 15px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.mob-dropdown-trigger:hover { color: white; }
+
+.mob-arrow {
+  font-size: 11px;
+  transition: transform 0.2s;
+}
+
+.mob-dropdown-trigger.active .mob-arrow {
+  transform: rotate(180deg);
+}
+
+.mob-dropdown-menu {
+  display: none;
+  background: rgba(255,255,255,0.04);
+  border-left: 2px solid var(--teal, #00b4d8);
+  margin: 0 12px 4px;
+  border-radius: 0 0 8px 8px;
+}
+
+.mob-dropdown-menu a {
+  display: block;
+  padding: 10px 16px !important;
+  font-size: 13px !important;
+  color: rgba(255,255,255,0.65) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.mob-dropdown-menu a:last-child { border-bottom: none; }
+.mob-dropdown-menu a:hover { color: white !important; }
+
+/* ── DROPDOWN ── */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.nav-dropdown > a::after {
+  content: '▾';
+  font-size: 10px;
+  opacity: 0.7;
+  transition: transform 0.2s;
+}
+
+.nav-dropdown:hover > a::after {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 22, 40, 0.97);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-6px);
+  transition: all 0.2s ease;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: rgba(10,22,40,0.97);
+  border-left: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu a {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px !important;
+  border-radius: 8px;
+  font-size: 13px !important;
+  color: rgba(255,255,255,0.75) !important;
+  transition: all 0.15s !important;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.07);
+  color: white !important;
+}
+
+.dropdown-menu a .dd-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin: 4px 8px;
+}
+
+.nav-mobile{
+  display:none;
+  flex-direction:column;
+}
+
+.nav-mobile.open{
+  display:flex;
+}
+  .nav-mobile{
+  display:none;
+  flex-direction:column;
+  background: rgba(10,22,40,0.99);
+  padding: 1rem;
+}
+
+.nav-mobile.open{
+  display:flex;
+}
+
+.nav-hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.nav-hamburger span{
+  width:24px;
+  height:2px;
+  background:white;
+  border-radius:2px;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+  .nav-links,
+  .nav-right{
+    display:none;
+  }
+
+  .nav-hamburger{
+    display:flex;
+  }
+
+}
+</style>
 
 <nav id="navbar">
   <div class="nav-inner">
@@ -83,12 +267,13 @@ const navHTML = `
   </div>
 
   <!-- Mobile Menu -->
+  <!-- Mobile Menu -->
   <div class="nav-mobile" id="navMobile">
     <a href="${root}index.html">🏠 Home</a>
     
     <!-- About Mobile Dropdown -->
     <div class="mob-dropdown">
-      <div class="mob-dropdown-trigger" onclick="toggleMobDrop(this)">
+<div class="mob-dropdown-trigger">
         🏛️ About <span class="mob-arrow">▾</span>
       </div>
       <div class="mob-dropdown-menu">
@@ -100,7 +285,7 @@ const navHTML = `
 
     <!-- Authors Mobile Dropdown -->
     <div class="mob-dropdown">
-      <div class="mob-dropdown-trigger" onclick="toggleMobDrop(this)">
+<div class="mob-dropdown-trigger">
         ✍️ Authors <span class="mob-arrow">▾</span>
       </div>
       <div class="mob-dropdown-menu">
@@ -149,9 +334,13 @@ const footerHTML = `
   </div>
 </footer>`;
 
+
+
+
 // ── INJECT ──
 document.body.insertAdjacentHTML('afterbegin', navHTML);
 document.body.insertAdjacentHTML('beforeend', footerHTML);
+
 // ── HAMBURGER TOGGLE ──
 const hamburger = document.getElementById('navHamburger');
 const mobile = document.getElementById('navMobile');
@@ -163,48 +352,23 @@ if (hamburger && mobile) {
   });
 }
 
-// ── MOBILE DROPDOWNS ──
-const isMobile = () => window.innerWidth <= 768;
-
-document.querySelectorAll('.nav-dropdown > a').forEach(trigger => {
-  trigger.addEventListener('click', (e) => {
-    if (isMobile()) {
-      e.preventDefault();
-
-      const menu = trigger.nextElementSibling;
-      const isOpen = menu.style.display === 'block';
-
-      // Close others
-      document.querySelectorAll('.dropdown-menu')
-        .forEach(m => m.style.display = 'none');
-
-      // Toggle current
-      menu.style.display = isOpen ? 'none' : 'block';
-    }
-  });
-});
-
-// Close when clicking outside
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.nav-dropdown')) {
-    document.querySelectorAll('.dropdown-menu')
+// ── MOBILE DROPDOWNS — event delegation ──
+document.addEventListener('click', function(e) {
+  const trigger = e.target.closest('.mob-dropdown-trigger');
+  if (trigger) {
+    e.preventDefault();
+    e.stopPropagation();
+    const menu = trigger.nextElementSibling;
+    const isOpen = menu.style.display === 'block';
+    // Close all
+    document.querySelectorAll('.mob-dropdown-menu')
       .forEach(m => m.style.display = 'none');
+    document.querySelectorAll('.mob-dropdown-trigger')
+      .forEach(t => t.classList.remove('active'));
+    // Toggle this
+    if (!isOpen) {
+      menu.style.display = 'block';
+      trigger.classList.add('active');
+    }
   }
-});
-
-window.toggleMobDrop = function(trigger) {
-
-  const menu = trigger.nextElementSibling;
-  const isOpen = menu.style.display === 'block';
-
-  document.querySelectorAll('.mob-dropdown-menu')
-    .forEach(m => m.style.display = 'none');
-
-  document.querySelectorAll('.mob-dropdown-trigger')
-    .forEach(t => t.classList.remove('active'));
-
-  if (!isOpen) {
-    menu.style.display = 'block';
-    trigger.classList.add('active');
-  }
-};
+})
