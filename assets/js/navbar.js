@@ -7,97 +7,6 @@ const isSubPage = window.location.pathname.includes('/pages/');
 const root = isSubPage ? '../' : './';
 
 const navHTML = `
-<style>
-/* ── DROPDOWN ── */
-.nav-dropdown {
-  position: relative;
-}
-
-.nav-dropdown > a {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-}
-
-.nav-dropdown > a::after {
-  content: '▾';
-  font-size: 10px;
-  opacity: 0.7;
-  transition: transform 0.2s;
-}
-
-.nav-dropdown:hover > a::after {
-  transform: rotate(180deg);
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(10, 22, 40, 0.97);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: 8px;
-  min-width: 180px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-50%) translateY(-6px);
-  transition: all 0.2s ease;
-  z-index: 1000;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-}
-
-.dropdown-menu::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 10px;
-  background: rgba(10,22,40,0.97);
-  border-left: 1px solid rgba(255,255,255,0.1);
-  border-top: 1px solid rgba(255,255,255,0.1);
-  transform: translateX(-50%) rotate(45deg);
-}
-
-.nav-dropdown:hover .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-
-.dropdown-menu a {
-  display: flex !important;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px !important;
-  border-radius: 8px;
-  font-size: 13px !important;
-  color: rgba(255,255,255,0.75) !important;
-  transition: all 0.15s !important;
-  white-space: nowrap;
-}
-
-.dropdown-menu a:hover {
-  background: rgba(255,255,255,0.07);
-  color: white !important;
-}
-
-.dropdown-menu a .dd-icon {
-  font-size: 14px;
-  flex-shrink: 0;
-}
-
-.dropdown-divider {
-  height: 1px;
-  background: rgba(255,255,255,0.07);
-  margin: 4px 8px;
-}
-</style>
 
 <nav id="navbar">
   <div class="nav-inner">
@@ -176,12 +85,32 @@ const navHTML = `
   <!-- Mobile Menu -->
   <div class="nav-mobile" id="navMobile">
     <a href="${root}index.html">🏠 Home</a>
-    <a href="${root}pages/about.html">🏛️ About Conference</a>
-    <a href="${root}pages/committees.html">👥 Committees</a>
-    <a href="${root}pages/keynote-speakers.html">🎤 Keynote Speakers</a>
-    <a href="${root}pages/call-for-papers.html">📄 Call for Papers</a>
+    
+    <!-- About Mobile Dropdown -->
+    <div class="mob-dropdown">
+      <div class="mob-dropdown-trigger" onclick="toggleMobDrop(this)">
+        🏛️ About <span class="mob-arrow">▾</span>
+      </div>
+      <div class="mob-dropdown-menu">
+        <a href="${root}pages/about.html">About Conference</a>
+        <a href="${root}pages/committees.html">Committees</a>
+        <a href="${root}pages/keynote-speakers.html">Keynote Speakers</a>
+      </div>
+    </div>
+
+    <!-- Authors Mobile Dropdown -->
+    <div class="mob-dropdown">
+      <div class="mob-dropdown-trigger" onclick="toggleMobDrop(this)">
+        ✍️ Authors <span class="mob-arrow">▾</span>
+      </div>
+      <div class="mob-dropdown-menu">
+        <a href="${root}pages/call-for-papers.html">Call for Papers</a>
+        <a href="https://easychair.org/conferences/?conf=icetcse2027" target="_blank">Submit Paper</a>
+        <a href="${root}pages/registration.html">Registration</a>
+      </div>
+    </div>
+
     <a href="${root}pages/important-dates.html">📅 Important Dates</a>
-    <a href="${root}pages/registration.html">🎟️ Registration</a>
     <a href="${root}pages/tourism.html">🌴 Places to Visit</a>
     <a href="${root}pages/contact.html">📬 Contact</a>
     <a href="https://easychair.org/conferences/?conf=icetcse2027"
@@ -223,40 +152,59 @@ const footerHTML = `
 // ── INJECT ──
 document.body.insertAdjacentHTML('afterbegin', navHTML);
 document.body.insertAdjacentHTML('beforeend', footerHTML);
-
 // ── HAMBURGER TOGGLE ──
-// ── HAMBURGER TOGGLE ──
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.getElementById('navHamburger');
-  const mobile    = document.getElementById('navMobile');
-  if (hamburger && mobile) {
-    hamburger.addEventListener('click', () => {
-      mobile.classList.toggle('open');
-      hamburger.classList.toggle('open');
-    });
-  }
+const hamburger = document.getElementById('navHamburger');
+const mobile = document.getElementById('navMobile');
 
-  // ── MOBILE DROPDOWNS (click instead of hover) ──
-  const isMobile = () => window.innerWidth <= 768;
-
-  document.querySelectorAll('.nav-dropdown > a').forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
-      if (isMobile()) {
-        e.preventDefault();
-        const menu = trigger.nextElementSibling;
-        const isOpen = menu.style.display === 'block';
-        // Close all other dropdowns
-        document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
-        // Toggle this one
-        menu.style.display = isOpen ? 'none' : 'block';
-      }
-    });
+if (hamburger && mobile) {
+  hamburger.addEventListener('click', () => {
+    mobile.classList.toggle('open');
+    hamburger.classList.toggle('open');
   });
+}
 
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.nav-dropdown')) {
-      document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
+// ── MOBILE DROPDOWNS ──
+const isMobile = () => window.innerWidth <= 768;
+
+document.querySelectorAll('.nav-dropdown > a').forEach(trigger => {
+  trigger.addEventListener('click', (e) => {
+    if (isMobile()) {
+      e.preventDefault();
+
+      const menu = trigger.nextElementSibling;
+      const isOpen = menu.style.display === 'block';
+
+      // Close others
+      document.querySelectorAll('.dropdown-menu')
+        .forEach(m => m.style.display = 'none');
+
+      // Toggle current
+      menu.style.display = isOpen ? 'none' : 'block';
     }
   });
 });
+
+// Close when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-dropdown')) {
+    document.querySelectorAll('.dropdown-menu')
+      .forEach(m => m.style.display = 'none');
+  }
+});
+
+window.toggleMobDrop = function(trigger) {
+
+  const menu = trigger.nextElementSibling;
+  const isOpen = menu.style.display === 'block';
+
+  document.querySelectorAll('.mob-dropdown-menu')
+    .forEach(m => m.style.display = 'none');
+
+  document.querySelectorAll('.mob-dropdown-trigger')
+    .forEach(t => t.classList.remove('active'));
+
+  if (!isOpen) {
+    menu.style.display = 'block';
+    trigger.classList.add('active');
+  }
+};
