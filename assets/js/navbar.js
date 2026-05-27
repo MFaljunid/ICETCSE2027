@@ -225,6 +225,7 @@ document.body.insertAdjacentHTML('afterbegin', navHTML);
 document.body.insertAdjacentHTML('beforeend', footerHTML);
 
 // ── HAMBURGER TOGGLE ──
+// ── HAMBURGER TOGGLE ──
 document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('navHamburger');
   const mobile    = document.getElementById('navMobile');
@@ -234,4 +235,28 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.classList.toggle('open');
     });
   }
+
+  // ── MOBILE DROPDOWNS (click instead of hover) ──
+  const isMobile = () => window.innerWidth <= 768;
+
+  document.querySelectorAll('.nav-dropdown > a').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      if (isMobile()) {
+        e.preventDefault();
+        const menu = trigger.nextElementSibling;
+        const isOpen = menu.style.display === 'block';
+        // Close all other dropdowns
+        document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
+        // Toggle this one
+        menu.style.display = isOpen ? 'none' : 'block';
+      }
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
+    }
+  });
 });
