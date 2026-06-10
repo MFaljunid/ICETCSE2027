@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navbar Test</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: sans-serif; background: #0a1628; color: white; }
+
+#navbar {
+  position: fixed; top:0; left:0; width:100%;
+  background: rgba(10,22,40,0.97);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  z-index: 9999;
+}
+.nav-inner {
+  max-width:1200px; margin:0 auto; padding:0 1.5rem;
+  display:flex; align-items:center; justify-content:space-between;
+  height:64px;
+}
+.nav-brand { color:#e8a020; font-weight:700; font-size:16px; text-decoration:none; }
+
+/* Desktop links */
+.nav-links { display:flex; gap:8px; }
+.nav-links a { color:rgba(255,255,255,0.7); padding:6px 12px; border-radius:6px; text-decoration:none; font-size:13px; }
+.nav-links a:hover { color:#e8a020; }
+
+/* CTA button */
+.nav-cta {
+  background:#e8a020; color:#0a1628 !important;
+  padding:8px 16px; border-radius:6px;
+  font-weight:700; font-size:13px; text-decoration:none;
+}
+
+/* Hamburger button */
+#ham-btn {
+  display:none;
+  background:none; border:none; cursor:pointer;
+  flex-direction:column; gap:5px; padding:8px;
+}
+#ham-btn span {
+  display:block; width:24px; height:2px;
+  background:white; border-radius:2px;
+  transition: all 0.3s;
+}
+
+/* Mobile menu - HIDDEN by default */
+#mob-menu {
+  display: none;
+  flex-direction: column;
+  background: #080f1f;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 10px 0 20px;
+}
+/* VISIBLE when active */
+#mob-menu.show {
+  display: flex;
+}
+#mob-menu a {
+  color:rgba(255,255,255,0.8); 
+  padding:12px 24px;
+  text-decoration:none; font-size:15px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  display:block;
+}
+#mob-menu a:hover { color:white; background:rgba(255,255,255,0.04); }
+
+/* Mobile sub-items */
+.mob-sub { display:none; background:rgba(0,180,216,0.06); border-left:3px solid #00b4d8; margin:0 0 0 24px; }
+.mob-sub.show { display:block; }
+.mob-sub a { padding:10px 16px; font-size:14px; color:rgba(255,255,255,0.65); }
+
+/* Mobile section header (clickable) */
+.mob-section {
+  color:rgba(255,255,255,0.8);
+  padding:12px 24px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  cursor:pointer; font-size:15px;
+  display:flex; justify-content:space-between; align-items:center;
+  user-select:none;
+}
+.mob-section:hover { background:rgba(255,255,255,0.04); }
+.mob-arrow { font-size:11px; transition:transform 0.25s; }
+.mob-section.open .mob-arrow { transform:rotate(180deg); }
+
+/* Mobile CTA */
+.mob-cta {
+  background:#e8a020; color:#0a1628 !important;
+  margin:14px 16px 0; padding:12px;
+  border-radius:6px; font-weight:700;
+  text-align:center; font-size:14px;
+  border-bottom:none !important;
+}
+
+@media(max-width:768px) {
+  .nav-links { display:none; }
+  .nav-cta { display:none; }
+  #ham-btn { display:flex; }
+}
+</style>
+</head>
+<body>
+
+<div id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">ICETCSE – 2027</a>
+    
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Authors</a>
+      <a href="#">Dates</a>
+      <a href="#">Visit</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <a href="#" class="nav-cta">Submit Paper →</a>
+
+    <button id="ham-btn">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div id="mob-menu">
+    <a href="#">🏠 Home</a>
+
+    <div class="mob-section" id="sec1">
+      🏛️ About <span class="mob-arrow">▾</span>
+    </div>
+    <div class="mob-sub" id="sub1">
+      <a href="#">About Conference</a>
+      <a href="#">Committees</a>
+      <a href="#">Keynote Speakers</a>
+    </div>
+
+    <div class="mob-section" id="sec2">
+      ✍️ Authors <span class="mob-arrow">▾</span>
+    </div>
+    <div class="mob-sub" id="sub2">
+      <a href="#">Call for Papers</a>
+      <a href="#">Submit Paper</a>
+      <a href="#">Registration</a>
+    </div>
+
+    <a href="#">📅 Important Dates</a>
+    <a href="#">🌴 Places to Visit</a>
+    <a href="#">📬 Contact</a>
+    <a href="#" class="mob-cta">Submit Paper →</a>
+  </div>
+</div>
+
+<div style="padding-top:80px; padding:100px 2rem 2rem;">
+  <h1 style="color:#e8a020;">Test Page</h1>
+  <p style="color:rgba(255,255,255,0.6); margin-top:1rem;">Open on mobile and test the hamburger menu.</p>
+</div>
+
+<script>
+// Hamburger toggle
+document.getElementById('ham-btn').onclick = function() {
+  var menu = document.getElementById('mob-menu');
+  var isOpen = menu.classList.contains('show');
+  if (isOpen) {
+    menu.classList.remove('show');
+  } else {
+    menu.classList.add('show');
+  }
+};
+
+// Sub-menu toggles
+document.getElementById('sec1').onclick = function() {
+  var sub = document.getElementById('sub1');
+  var isOpen = sub.classList.contains('show');
+  // close all
+  document.querySelectorAll('.mob-sub').forEach(function(s){ s.classList.remove('show'); });
+  document.querySelectorAll('.mob-section').forEach(function(s){ s.classList.remove('open'); });
+  if (!isOpen) {
+    sub.classList.add('show');
+    this.classList.add('open');
+  }
+};
+
+document.getElementById('sec2').onclick = function() {
+  var sub = document.getElementById('sub2');
+  var isOpen = sub.classList.contains('show');
+  document.querySelectorAll('.mob-sub').forEach(function(s){ s.classList.remove('show'); });
+  document.querySelectorAll('.mob-section').forEach(function(s){ s.classList.remove('open'); });
+  if (!isOpen) {
+    sub.classList.add('show');
+    this.classList.add('open');
+  }
+};
+</script>
+</body>
+</html>
