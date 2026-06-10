@@ -13,22 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── 2. MOBILE HAMBURGER ──
-  const hamburger = document.getElementById('navHamburger');
-  const mobileMenu = document.getElementById('navMobile');
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-    // Close on link click
-    mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-      });
-    });
-  }
 
   // ── 3. ACTIVE NAV LINK on scroll ──
   const sections = document.querySelectorAll('section[id], div[id]');
