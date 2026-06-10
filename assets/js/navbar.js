@@ -42,8 +42,10 @@ const navHTML = `
   border-top: 1px solid rgba(255,255,255,0.08);
   padding: 8px 0 20px; width: 100%;
 }
-.nav-mobile.open { display: flex !important; }
-.nav-mobile > a {
+.nav-mobile.show {
+  display: flex !important;
+}
+  .nav-mobile > a {
   padding: 13px 20px; color: rgba(255,255,255,0.85) !important;
   font-size: 15px; border-bottom: 1px solid rgba(255,255,255,0.06); display: block;
 }
@@ -62,7 +64,7 @@ const navHTML = `
   display: none; background: rgba(0,180,216,0.06);
   border-left: 3px solid #00b4d8; margin: 0 0 0 20px;
 }
-.mob-dropdown-menu.open { display: block !important; }
+.mob-dropdown-menu.show { display: block !important; }
 .mob-dropdown-menu a {
   display: block !important; padding: 11px 18px !important;
   font-size: 14px !important; color: rgba(255,255,255,0.7) !important;
@@ -205,11 +207,11 @@ document.getElementById('mobTrigger2').onclick = function() { toggleMob('mobMenu
 
 function toggleMob(menuId, trigger) {
   var menu = document.getElementById(menuId);
-  var isOpen = menu.classList.contains('open');
-  document.querySelectorAll('.mob-dropdown-menu').forEach(function(m) { m.classList.remove('open'); });
+  var isOpen = menu.classList.contains('show');  // ← تتحقق show
+  document.querySelectorAll('.mob-dropdown-menu').forEach(function(m) { m.classList.remove('show'); });
   document.querySelectorAll('.mob-dropdown-trigger').forEach(function(t) { t.classList.remove('open'); });
   if (!isOpen) {
-    menu.classList.add('open');
+    menu.classList.add('show');   // ← أضف show
     trigger.classList.add('open');
   }
 }
