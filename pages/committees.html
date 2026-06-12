@@ -7,15 +7,12 @@
   <link rel="stylesheet" href="../assets/css/navbar.css">
   <link rel="stylesheet" href="../assets/css/components.css">
   <style>
-    /* ── COMMITTEE PAGE STYLES ── */
     .committee-layout {
       display: grid;
       grid-template-columns: 220px 1fr;
       gap: 2.5rem;
       align-items: start;
     }
-
-    /* Sidebar nav */
     .committee-nav {
       position: sticky;
       top: 88px;
@@ -24,7 +21,6 @@
       border-radius: 14px;
       overflow: hidden;
     }
-
     .committee-nav a {
       display: flex;
       align-items: center;
@@ -37,26 +33,16 @@
       cursor: pointer;
       text-decoration: none;
     }
-
     .committee-nav a:last-child { border-bottom: none; }
-
     .committee-nav a:hover,
     .committee-nav a.active {
       background: rgba(0,180,216,0.1);
       color: var(--teal);
     }
-
     .committee-nav a .nav-icon { font-size: 15px; flex-shrink: 0; }
-
-    /* Content panels */
     .committee-panel { display: none; }
     .committee-panel.active { display: block; }
-
-    /* Section header */
-    .cmt-section {
-      margin-bottom: 2.5rem;
-    }
-
+    .cmt-section { margin-bottom: 2.5rem; }
     .cmt-section-title {
       font-family: var(--font-display);
       font-size: 18px;
@@ -67,7 +53,6 @@
       border-bottom: 2px solid var(--blue);
       display: inline-block;
     }
-
     .cmt-note {
       font-size: 12px;
       color: rgba(255,255,255,0.35);
@@ -75,34 +60,18 @@
       margin-bottom: 12px;
       display: block;
     }
-
-    /* Member list */
-    .member-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
+    .member-list { list-style: none; margin: 0; padding: 0; }
     .member-item {
-      padding: 7px 0;
+      padding: 6px 0;
       border-bottom: 1px solid rgba(255,255,255,0.05);
-      line-height: 1.4;
-    }
-
-    .member-item:last-child { border-bottom: none; }
-
-    .member-name {
-      color: var(--accent);
-      font-weight: 600;
+      line-height: 1.5;
       font-size: 14px;
     }
+    .member-item:last-child { border-bottom: none; }
+    .member-name { color: var(--accent); font-weight: 600; }
+    .member-info { color: rgba(255,255,255,0.5); }
 
-    .member-role {
-      color: rgba(255,255,255,0.45);
-      font-size: 13px;
-    }
-
-    /* Role badge inline */
+    /* Organizing committee keeps role badges */
     .role-label {
       display: inline-block;
       font-size: 10px;
@@ -113,20 +82,16 @@
       margin-right: 6px;
       vertical-align: middle;
     }
+    .role-gold { background: rgba(232,160,32,0.15); color: #e8a020; border: 1px solid rgba(232,160,32,0.3); }
+    .role-blue { background: rgba(26,79,160,0.15); color: #6699dd; border: 1px solid rgba(26,79,160,0.3); }
+    .role-teal { background: rgba(0,180,216,0.12); color: var(--teal); border: 1px solid rgba(0,180,216,0.3); }
 
-    .role-gold  { background: rgba(232,160,32,0.15); color: #e8a020; border: 1px solid rgba(232,160,32,0.3); }
-    .role-blue  { background: rgba(26,79,160,0.15);  color: #6699dd; border: 1px solid rgba(26,79,160,0.3);  }
-    .role-teal  { background: rgba(0,180,216,0.12);  color: var(--teal); border: 1px solid rgba(0,180,216,0.3); }
-    .role-green { background: rgba(39,174,96,0.12);  color: #5de899;  border: 1px solid rgba(39,174,96,0.3);  }
-
-    /* Stats bar */
     .cmt-stats {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
       margin-bottom: 2rem;
     }
-
     .cmt-stat {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
@@ -134,7 +99,6 @@
       padding: 10px 18px;
       text-align: center;
     }
-
     .cmt-stat-num {
       font-family: var(--font-display);
       font-size: 22px;
@@ -142,24 +106,18 @@
       color: var(--accent);
       display: block;
     }
-
     .cmt-stat-label {
       font-size: 11px;
       color: rgba(255,255,255,0.45);
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-
-    /* TPC two-column grid */
     .tpc-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0;
     }
-
-    .tpc-grid .member-item {
-      padding: 7px 12px 7px 0;
-    }
+    .tpc-grid .member-item { padding: 6px 12px 6px 0; }
 
     @media (max-width: 900px) {
       .committee-layout { grid-template-columns: 1fr; }
@@ -198,55 +156,25 @@
 <section style="background:var(--navy2);">
   <div class="container">
 
-    <!-- Stats bar -->
     <div class="cmt-stats reveal">
-      <div class="cmt-stat">
-        <span class="cmt-stat-num">3</span>
-        <span class="cmt-stat-label">Patron Members</span>
-      </div>
-      <div class="cmt-stat">
-        <span class="cmt-stat-num">14</span>
-        <span class="cmt-stat-label">Organizing Members</span>
-      </div>
-      <div class="cmt-stat">
-        <span class="cmt-stat-num">4</span>
-        <span class="cmt-stat-label">Advisory Members</span>
-      </div>
-      <div class="cmt-stat">
-        <span class="cmt-stat-num">17</span>
-        <span class="cmt-stat-label">TPC Members</span>
-      </div>
-      <div class="cmt-stat">
-        <span class="cmt-stat-num">5+</span>
-        <span class="cmt-stat-label">Countries</span>
-      </div>
+      <div class="cmt-stat"><span class="cmt-stat-num">3</span><span class="cmt-stat-label">Patron Members</span></div>
+      <div class="cmt-stat"><span class="cmt-stat-num">14</span><span class="cmt-stat-label">Organizing Members</span></div>
+      <div class="cmt-stat"><span class="cmt-stat-num">4</span><span class="cmt-stat-label">Advisory Members</span></div>
+      <div class="cmt-stat"><span class="cmt-stat-num">17</span><span class="cmt-stat-label">TPC Members</span></div>
+      <div class="cmt-stat"><span class="cmt-stat-num">5+</span><span class="cmt-stat-label">Countries</span></div>
     </div>
 
     <div class="committee-layout reveal">
 
-      <!-- ── SIDEBAR NAV ── -->
       <nav class="committee-nav">
-        <a class="active" onclick="showCmt('patrons',this)">
-          <span class="nav-icon">👑</span> Patron Committee
-        </a>
-        <a onclick="showCmt('organizing',this)">
-          <span class="nav-icon">🏛️</span> Organizing Committee
-        </a>
-        <a onclick="showCmt('general',this)">
-          <span class="nav-icon">🎓</span> General Chairs
-        </a>
-        <a onclick="showCmt('advisory',this)">
-          <span class="nav-icon">💡</span> Advisory Committee
-        </a>
-        <a onclick="showCmt('tpc',this)">
-          <span class="nav-icon">🔬</span> Technical Program Committee
-        </a>
-        <a onclick="showCmt('other',this)">
-          <span class="nav-icon">📋</span> Other Committees
-        </a>
+        <a class="active" onclick="showCmt('patrons',this)"><span class="nav-icon">👑</span> Patron Committee</a>
+        <a onclick="showCmt('organizing',this)"><span class="nav-icon">🏛️</span> Organizing Committee</a>
+        <a onclick="showCmt('general',this)"><span class="nav-icon">🎓</span> General Chairs</a>
+        <a onclick="showCmt('advisory',this)"><span class="nav-icon">💡</span> Advisory Committee</a>
+        <a onclick="showCmt('tpc',this)"><span class="nav-icon">🔬</span> Technical Program Committee</a>
+        <a onclick="showCmt('other',this)"><span class="nav-icon">📋</span> Other Committees</a>
       </nav>
 
-      <!-- ── CONTENT ── -->
       <div class="committee-content">
 
         <!-- PATRONS -->
@@ -256,18 +184,18 @@
             <ul class="member-list" style="margin-top:14px;">
               <li class="member-item">
                 <span class="role-label role-gold">Chief Patron</span>
-                <span class="member-name">Mr. Siddhartha J. Shetty</span>
-                <span class="member-role">, Chairman & Correspondent, MITK, Kundapura</span>
+                <span class="member-name">Siddhartha J. Shetty</span>
+                <span class="member-info">, MITK, Kundapura, India</span>
               </li>
               <li class="member-item">
                 <span class="role-label role-gold">Patron</span>
-                <span class="member-name">Dr. Ramakrishna Hegde</span>
-                <span class="member-role">, Principal, MITK, Kundapura</span>
+                <span class="member-name">Ramakrishna Hegde</span>
+                <span class="member-info">, MITK, Kundapura, India</span>
               </li>
               <li class="member-item">
                 <span class="role-label role-gold">Patron</span>
-                <span class="member-name">Dr. Shankaranarayana Bhat M</span>
-                <span class="member-role">, Professor & Academic Director, IMJ, Kundapura</span>
+                <span class="member-name">Shankaranarayana Bhat M</span>
+                <span class="member-info">, IMJ Institutions, Kundapura, India</span>
               </li>
             </ul>
           </div>
@@ -280,79 +208,31 @@
             <ul class="member-list" style="margin-top:14px;">
               <li class="member-item">
                 <span class="role-label role-gold">Organizing Chair</span>
-                <span class="member-name">Dr. Ramakrishna Hegde</span>
-                <span class="member-role">, Principal, MITK, Kundapura</span>
+                <span class="member-name">Ramakrishna Hegde</span>
+                <span class="member-info">, MITK, Kundapura, India</span>
               </li>
               <li class="member-item">
                 <span class="role-label role-blue">Convener</span>
-                <span class="member-name">Dr. Mohammed Al Junid</span>
-                <span class="member-role">, Associate Professor, Dept. of CSE, MITK</span>
+                <span class="member-name">Mohammed Al Junid</span>
+                <span class="member-info">, MITK, Kundapura, India</span>
               </li>
               <li class="member-item">
                 <span class="role-label role-blue">Co-Convener</span>
-                <span class="member-name">Dr. Manjunath Ramanna Lamani</span>
-                <span class="member-role">, Associate Professor & HoD, Dept. of CSE, MITK</span>
+                <span class="member-name">Manjunath Ramanna Lamani</span>
+                <span class="member-info">, MITK, Kundapura, India</span>
               </li>
-              <li class="member-item">
-                <span class="role-label role-blue">HoD, AI & ML</span>
-                <span class="member-name">Dr. Indra Vijay Singh</span>
-                <span class="member-role">, Professor & HoD, Dept. of AI & ML, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-blue">HoD, ECE</span>
-                <span class="member-name">Prof. Varun Kumar</span>
-                <span class="member-role">, Associate Professor & HoD, Dept. of ECE, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-blue">HoD, CSE (DS)</span>
-                <span class="member-name">Dr. Sam Abraham</span>
-                <span class="member-role">, Associate Professor & HoD, Dept. of CSE-DS, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-blue">Head, MBA</span>
-                <span class="member-name">Dr. Suchithra Pujari</span>
-                <span class="member-role">, Dept. of MBA, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-blue">Faculty, CSE</span>
-                <span class="member-name">Dr. K. Subashini</span>
-                <span class="member-role">, Professor, Dept. of CSE, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-blue">Faculty, CSE</span>
-                <span class="member-name">Dr. Lakshmikanthan S</span>
-                <span class="member-role">, Associate Professor, Dept. of CSE, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-blue">Faculty, CSE</span>
-                <span class="member-name">Prof. Sookshma Adiga</span>
-                <span class="member-role">, Dept. of CSE, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-blue">Faculty, CSE</span>
-                <span class="member-name">Prof. Prameela</span>
-                <span class="member-role">, Dept. of CSE, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-blue">Faculty, CSE</span>
-                <span class="member-name">Prof. Smithashree K</span>
-                <span class="member-role">, Dept. of CSE, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-blue">Faculty, CSE</span>
-                <span class="member-name">Prof. Anilkumar Shetty</span>
-                <span class="member-role">, Dept. of CSE, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-blue">Faculty, CSE</span>
-                <span class="member-name">Prof. Harsha N Honnu</span>
-                <span class="member-role">, Dept. of CSE, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-blue">Office Secretary</span>
-                <span class="member-name">Ms. Supriya</span>
-                <span class="member-role">, Dept. of CSE, MITK</span>
-              </li>
+              <li class="member-item"><span class="member-name">Indra Vijay Singh</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Varun Kumar</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Sam Abraham</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Suchithra Pujari</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">K. Subashini</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Lakshmikanthan S</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Sookshma Adiga</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Prameela</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Smithashree K</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Anilkumar Shetty</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Harsha N Honnu</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Supriya</span><span class="member-info">, MITK, Kundapura, India</span></li>
             </ul>
           </div>
         </div>
@@ -363,12 +243,16 @@
             <div class="cmt-section-title">General Chairs</div>
             <ul class="member-list" style="margin-top:14px;">
               <li class="member-item">
-                <span class="member-name">Dr. Indra Vijay Singh</span>
-                <span class="member-role">, Dean of Research, MITK, Kundapura, India</span>
+                <span class="member-name">Anil Kumar K M</span>
+                <span class="member-info">, SJCE, JSS Science and Technology University, Mysore, India</span>
               </li>
               <li class="member-item">
-                <span class="member-name">Dr. Hasan Firdaus Bin Mohd Zaki</span>
-                <span class="member-role">, Director, Centre for Unmanned Technologies (CUTe), Kulliyyah of Engineering, International Islamic University Malaysia</span>
+                <span class="member-name">Indra Vijay Singh</span>
+                <span class="member-info">, MITK, Kundapura, India</span>
+              </li>
+              <li class="member-item">
+                <span class="member-name">Hasan Firdaus Bin Mohd Zaki</span>
+                <span class="member-info">, International Islamic University Malaysia, Malaysia</span>
               </li>
             </ul>
           </div>
@@ -380,20 +264,20 @@
             <div class="cmt-section-title">Advisory Committee</div>
             <ul class="member-list" style="margin-top:14px;">
               <li class="member-item">
-                <span class="member-name">Dr. Manjaiah D H</span>
-                <span class="member-role">, Professor & Dean of Science, Mangalore University, Karnataka, India</span>
+                <span class="member-name">Manjaiah D H</span>
+                <span class="member-info">, Mangalore University, Karnataka, India</span>
               </li>
               <li class="member-item">
-                <span class="member-name">Dr. B H Shekar</span>
-                <span class="member-role">, Professor, Dept. of Studies and Research in Computer Science, Mangalore University, Karnataka, India</span>
+                <span class="member-name">B H Shekar</span>
+                <span class="member-info">, Mangalore University, Karnataka, India</span>
               </li>
               <li class="member-item">
-                <span class="member-name">Dr. Sandeep Kumar</span>
-                <span class="member-role">, Professor, CHRIST (Deemed to be University), Bengaluru, India</span>
+                <span class="member-name">Sandeep Kumar</span>
+                <span class="member-info">, CHRIST University, Bengaluru, India</span>
               </li>
               <li class="member-item">
-                <span class="member-name">Dr. Shivaraj B. Hublikar</span>
-                <span class="member-role">, Professor & Dean Incubation, IMJ Institutions, Kundapura, India</span>
+                <span class="member-name">Shivaraj B. Hublikar</span>
+                <span class="member-info">, IMJ Institutions, Kundapura, India</span>
               </li>
             </ul>
           </div>
@@ -407,89 +291,40 @@
             <ul class="member-list" style="margin-top:14px;">
               <li class="member-item">
                 <span class="role-label role-teal">TPC Chair</span>
-                <span class="member-name">Dr. Mohammed Zakir B</span>
-                <span class="member-role">, Professor & HoD, AIML, PA College of Engineering, India</span>
+                <span class="member-name">Mohammed Zakir B</span>
+                <span class="member-info">, PA College of Engineering, India</span>
               </li>
               <li class="member-item">
                 <span class="role-label role-teal">TPC Co-Chair</span>
-                <span class="member-name">Dr. Evangelin Geetha D</span>
-                <span class="member-role">, Professor, Ramaiah Institute of Technology, India</span>
+                <span class="member-name">Evangelin Geetha D</span>
+                <span class="member-info">, Ramaiah Institute of Technology, Bengaluru, India</span>
               </li>
             </ul>
           </div>
 
           <div class="cmt-section">
-            <div class="cmt-section-title">International TPC Members</div>
-            <span class="cmt-note">Representing Italy · USA · Egypt · Yemen</span>
-            <ul class="member-list">
-              <li class="member-item">
-                <span class="member-name">Dr. Wasim Ali</span>
-                <span class="member-role">, Postdoctoral Fellow, Polytechnic University of Bari, Italy</span>
-              </li>
-              <li class="member-item">
-                <span class="member-name">Dr. Agaz Wani</span>
-                <span class="member-role">, Researcher & Data Scientist, University of South Florida, USA</span>
-              </li>
-              <li class="member-item">
-                <span class="member-name">Dr. Ezz El-Din Hemdan</span>
-                <span class="member-role">, Associate Professor, Menoufia University, Egypt</span>
-              </li>
-              <li class="member-item">
-                <span class="member-name">Dr. Khalid Al-Hussaini</span>
-                <span class="member-role">, Associate Professor, Thamar University, Yemen</span>
-              </li>
+            <div class="cmt-section-title">TPC Members</div>
+            <ul class="member-list" style="margin-top:14px;">
+              <li class="member-item"><span class="member-name">Wasim Ali</span><span class="member-info">, Polytechnic University of Bari, Italy</span></li>
+              <li class="member-item"><span class="member-name">Agaz Wani</span><span class="member-info">, University of South Florida, USA</span></li>
+              <li class="member-item"><span class="member-name">Ezz El-Din Hemdan</span><span class="member-info">, Menoufia University, Egypt</span></li>
+              <li class="member-item"><span class="member-name">Khalid Al-Hussaini</span><span class="member-info">, Thamar University, Yemen</span></li>
+              <li class="member-item"><span class="member-name">S Ajitha</span><span class="member-info">, MS Ramaiah Institute of Technology, Bengaluru, India</span></li>
+              <li class="member-item"><span class="member-name">Murugan R</span><span class="member-info">, Jain University, Bengaluru, India</span></li>
+              <li class="member-item"><span class="member-name">K. Subashini</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Manoj A. Patil</span><span class="member-info">, Christ University, Bengaluru, India</span></li>
+              <li class="member-item"><span class="member-name">Radhika Kamath</span><span class="member-info">, Manipal University, India</span></li>
+              <li class="member-item"><span class="member-name">Preethi N Patil</span><span class="member-info">, Ramaiah Institute of Technology, Bengaluru, India</span></li>
+              <li class="member-item"><span class="member-name">Jp Prakashjeevanandham</span><span class="member-info">, Yenepoya Institute of Technology, India</span></li>
+              <li class="member-item"><span class="member-name">Shazia Mannan</span><span class="member-info">, Ramaiah Institute of Technology, Bengaluru, India</span></li>
+              <li class="member-item"><span class="member-name">Mahipunath</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Shrinidhi</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="member-name">Reena Raj</span><span class="member-info">, MITK, Kundapura, India</span></li>
             </ul>
           </div>
 
-          <div class="cmt-section">
-            <div class="cmt-section-title">TPC Members — India</div>
-            <div class="tpc-grid">
-              <li class="member-item" style="list-style:none;">
-                <span class="member-name">Dr. S Ajitha</span>
-                <span class="member-role">, Professor & HoD, MCA, MS Ramaiah Institute of Technology, Bengaluru</span>
-              </li>
-              <li class="member-item" style="list-style:none;">
-                <span class="member-name">Dr. Murugan R</span>
-                <span class="member-role">, Professor, MCA, Jain University, Bengaluru</span>
-              </li>
-              <li class="member-item" style="list-style:none;">
-                <span class="member-name">Dr. K. Subashini</span>
-                <span class="member-role">, Professor, Dept. of CSE, MITK, Kundapura</span>
-              </li>
-              <li class="member-item" style="list-style:none;">
-                <span class="member-name">Dr. Manoj A. Patil</span>
-                <span class="member-role">, Associate Professor, Christ University, Bengaluru</span>
-              </li>
-              <li class="member-item" style="list-style:none;">
-                <span class="member-name">Dr. Radhika Kamath</span>
-                <span class="member-role">, Associate Professor, Manipal University, India</span>
-              </li>
-              <li class="member-item" style="list-style:none;">
-                <span class="member-name">Dr. Preethi N Patil</span>
-                <span class="member-role">, Associate Professor, Ramaiah Institute of Technology, Bengaluru</span>
-              </li>
-              <li class="member-item" style="list-style:none;">
-                <span class="member-name">Dr. Jp Prakashjeevanandham</span>
-                <span class="member-role">, Associate Professor, Yenepoya Institute of Technology, India</span>
-              </li>
-              <li class="member-item" style="list-style:none;">
-                <span class="member-name">Dr. Shazia Mannan</span>
-                <span class="member-role">, Assistant Professor, Ramaiah Institute of Technology, Bengaluru</span>
-              </li>
-              <li class="member-item" style="list-style:none;">
-                <span class="member-name">Dr. Mahipunath</span>
-                <span class="member-role">, Associate Professor, Dept. of ECE, MITK</span>
-              </li>
-              <li class="member-item" style="list-style:none;">
-                <span class="member-name">Dr. Shrinidhi</span>
-                <span class="member-role">, Associate Professor, Dept. of BSMC, MITK</span>
-              </li>
-              <li class="member-item" style="list-style:none;">
-                <span class="member-name">Dr. Reena Raj</span>
-                <span class="member-role">, Associate Professor, Dept. of ECE, MITK</span>
-              </li>
-            </div>
-          </div>
+
+
 
         </div>
 
@@ -499,33 +334,16 @@
             <div class="cmt-section-title">Other Committees</div>
             <span class="cmt-note">Details will be updated soon</span>
             <ul class="member-list" style="margin-top:14px;">
-              <li class="member-item">
-                <span class="role-label role-teal">Registration</span>
-                <span class="member-name">[Faculty Name]</span>
-                <span class="member-role">, Chair, Registration Committee, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-teal">Publicity</span>
-                <span class="member-name">[Faculty Name]</span>
-                <span class="member-role">, Chair, Publicity Committee, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-teal">Finance</span>
-                <span class="member-name">[Faculty Name]</span>
-                <span class="member-role">, Chair, Finance Committee, MITK</span>
-              </li>
-              <li class="member-item">
-                <span class="role-label role-teal">Keynote</span>
-                <span class="member-name">[Faculty Name]</span>
-                <span class="member-role">, Chair, Keynote Committee, MITK</span>
-              </li>
+              <li class="member-item"><span class="role-label role-teal">Registration</span><span class="member-name">[Faculty Name]</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="role-label role-teal">Publicity</span><span class="member-name">[Faculty Name]</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="role-label role-teal">Finance</span><span class="member-name">[Faculty Name]</span><span class="member-info">, MITK, Kundapura, India</span></li>
+              <li class="member-item"><span class="role-label role-teal">Keynote</span><span class="member-name">[Faculty Name]</span><span class="member-info">, MITK, Kundapura, India</span></li>
             </ul>
           </div>
         </div>
 
       </div>
     </div>
-
   </div>
 </section>
 
