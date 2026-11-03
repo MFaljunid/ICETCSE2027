@@ -6,6 +6,10 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/navbar.css">
   <link rel="stylesheet" href="../assets/css/components.css">
+  <style>
+    .tracks-grid .track-card h3 { font-size: 19px; line-height: 1.35; }
+    .tracks-grid .track-topics li { font-size: 14px; }
+  </style>
 </head>
 <body>
 <div class="page-hero">
@@ -24,7 +28,7 @@
       <h2 class="section-title">Conference Tracks</h2>
       <p class="section-sub">We invite original contributions in the following four tracks.</p>
     </div>
-    <div class="tracks-grid reveal" style="margin-top:2rem;">
+    <div class="tracks-grid reveal" style="margin-top:2rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
       <div class="track-card">
         <span class="track-num">TRACK 01</span>
         <h3>Artificial Intelligence & Machine Learning</h3>
@@ -65,9 +69,39 @@
           <li>Embedded Systems & VLSI</li><li>Robotics & Automation</li>
         </ul>
       </div>
+      <div class="track-card">
+        <span class="track-num">TRACK 05</span>
+        <h3>Electronics, Communication & Intelligent Systems (ECE)</h3>
+        <ul class="track-topics">
+          <li>VLSI Design</li><li>Embedded Systems</li>
+          <li>Signal Processing</li><li>Wireless Communications</li>
+          <li>RF Engineering</li><li>Smart Sensors</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════
+     BEST PAPER AWARDS
+══════════════════════════════ -->
+<section style="background:var(--navy2);">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">Recognition</span>
+      <h2 class="section-title">Best Paper Awards</h2>
+    </div>
+    <div class="info-box reveal" style="margin-top:2rem;">
+      <h4>🏆 Best Paper Awards</h4>
+      <ul>
+        <li>The Technical Programme Committee of ICETCSE-2027 will select one Best Paper in each of the tracks mentioned above.</li>
+        <li>It is mandatory to present the paper during the Conference to be considered for the Best Paper Award.</li>
+        <li>Best Paper Awards will be announced and distributed during the Conference.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section style="background:var(--navy);">
   <div class="container">
     <div class="reveal">
@@ -75,21 +109,21 @@
       <h2 class="section-title">Submission Guidelines</h2>
     </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:2rem;" class="reveal">
-      <div class="info-box"><h4>📋 Paper Requirements</h4><ul><li>Original, unpublished work only</li><li>6–10 pages including references</li><li>Elsevier Procedia template required</li><li>PDF format (under 10 MB)</li><li>English language only</li><li>Remove all author details (double-blind)</li></ul></div>
+      <div class="info-box"><h4>📋 Paper Requirements</h4><ul><li>Original, unpublished work only</li><li>6–10 pages including references</li><li>IEEE conference template required</li><li>PDF format (under 10 MB)</li><li>English language only</li><li>Remove all author details (double-blind)</li></ul></div>
 
 
       <div class="info-box">
   <h4>📥 Templates & Resources</h4>
   <ul>
     <li>
-      <a href="../docs/Template_paper.zip" 
-         download
+      <a href="https://ieee.org/conferences/publishing/templates.html" 
+         target="_blank"
          style="color:var(--teal);font-weight:600;text-decoration:none;">
-         ⬇️ Download All Templates (ZIP)
+         ⬇️ Official IEEE Paper Templates (Word & LaTeX)
       </a>
     </li>
     <li style="color:rgba(255,255,255,0.45);font-size:12px;margin-top:-4px;">
-      &nbsp;&nbsp;&nbsp;📄 Includes: MS Word Template + LaTeX Template
+      &nbsp;&nbsp;&nbsp;📄 Choose US Letter or A4, Word or LaTeX — always the latest version from IEEE
     </li>
     <li>Author Guidelines PDF</li>
     <li>Sample Paper (Formatted)</li>

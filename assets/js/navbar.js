@@ -117,13 +117,13 @@ const navHTML = `
           <a href="${root}pages/registration.html"><span class="dd-icon">🎟️</span> Registration</a>
         </div>
       </div>
-      <a href="${root}pages/important-dates.html">Dates</a>
+<a href="${root}pages/important-dates.html">Important Dates</a>
       <a href="${root}pages/tourism.html">Visit</a>
       <a href="${root}pages/contact.html">Contact</a>
     </div>
 
     <div class="nav-right">
-      <img src="${root}assets/images/logo-elsevier.png" class="nav-elsevier-logo" alt="Elsevier">
+      <!-- <img src="${root}assets/images/logo-elsevier.png" class="nav-elsevier-logo" alt="Elsevier"> -->
       <a href="https://easychair.org/conferences/?conf=icetcse2027" target="_blank" class="nav-cta">Submit Paper \u2192</a>
     </div>
 
@@ -170,10 +170,10 @@ const footerHTML = `
     <div class="footer-brand">
       <img src="${root}assets/images/logo-mitk.png" class="footer-mitk" alt="MITK">
       <div class="footer-sep"></div>
-      <img src="${root}assets/images/logo-elsevier.png" class="footer-elsevier" alt="Elsevier">
+      <!-- <img src="${root}assets/images/logo-elsevier.png" class="footer-elsevier" alt="Elsevier"> -->
       <div style="margin-left:10px;">
         <div class="footer-text">\u00a9 2027 <span>ICETCSE-2027</span> \u00b7 Dept. of CSE, MIT, Kundapura, Udupi, Karnataka, India</div>
-        <div class="footer-text">Published by Elsevier Procedia Computer Science \u00b7 Scopus Indexed</div>
+        <div class="footer-text">Proceedings publisher to be confirmed</div>
       </div>
     </div>
     <div class="footer-links">
@@ -181,7 +181,7 @@ const footerHTML = `
       <a href="${root}pages/about.html">About</a>
       <a href="${root}pages/call-for-papers.html">Call for Papers</a>
       <a href="${root}pages/committees.html">Committees</a>
-      <a href="${root}pages/important-dates.html">Dates</a>
+      <a href="${root}pages/important-dates.html">Important Dates</a>
       <a href="${root}pages/keynote-speakers.html">Speakers</a>
       <a href="https://easychair.org/conferences/?conf=icetcse2027" target="_blank">Submit</a>
       <a href="${root}pages/registration.html">Register</a>
